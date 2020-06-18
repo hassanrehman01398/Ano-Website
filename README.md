@@ -3,18 +3,18 @@ Anonymous SocIal Website
 # Description
 A website for those people who want to share stuff but hesitate to do so in public so to get them out from that depression stuff we will launch this website in initial levels.
 
-#Frame-Work
+# Frame-Work
 Html,Css,Js and React
-#Database
+# Database
 MySql,PostSQL
 
-#Hosting
+# Hosting
 AWS
-#AI-Models
+# AI-Models
 Text classification
-#Software Model
+# Software Model
 Agile 
-#Security
+# Security
 Sql injection
 
 

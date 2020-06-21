@@ -14,6 +14,10 @@ AWS
 Text classification
 # Software Model
 Agile 
+# Cloud Hosting
+1) Azure Student Package
+2) AWS
+3) Github Workflow
 # Security
 Sql injection
 

@@ -8,12 +8,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
+    "draft-js": "^0.11.6",
     "fontsource-roboto": "^2.2.6",
     "material-ui-popup-state": "^1.6.1",
+    "mui-rte": "^1.24.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-draft-wysiwyg": "^1.14.5",
+    "react-native-richtext-editor": "^0.1.14",
+    "react-scripts": "3.4.1",
+    "rich-text-editor-react": "^3.6.3"
   },
   "scripts": {
     "start": "react-scripts start",

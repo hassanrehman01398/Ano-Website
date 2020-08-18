@@ -12,23 +12,29 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 //import styles from './App.block.css';
 
 const useStyles = makeStyles({
+
   root: {
     minWidth: 275,
   },
+
   bullet: {
     display: "inline-block",
     margin: "0 2px",
     transform: "scale(0.8)",
   },
+
   title: {
     fontSize: 14,
   },
+
   pos: {
     marginBottom: 12,
   },
+
   dis: {
     fontWeight: "600",
   },
+  
   card:{
       backgroundColor:'black',
       color:'#fff',

@@ -1,4 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -10,6 +18,8 @@ import ReplyIcon from '@material-ui/icons/Reply';
 //import styles, { css } from 'styled-components';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 //import styles from './App.block.css';
+import PostCard from './PostCard';
+
 
 const useStyles = makeStyles({
 
@@ -38,114 +48,36 @@ const useStyles = makeStyles({
   card:{
       backgroundColor:'black',
       color:'#fff',
+  },
+  link:{
+    textDecoration: 'none'
   }
 });
 
 export default function Cards() {
   const classes = useStyles();
   //const bull = <span className={classes.bullet}>•</span>;
+  const sample = [{title: "Hello", content: "content ajksdbakbdakbdah jhasbdjhasbd hasbdjhas jhsdb kjbkjb \r hvjv chgchgchgcghchgchgcghchgc fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ffffffffyhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh uuuuuuuuuuuuuuuuuuuuuuuuuuuuu tttttttttttttttttttttttt                  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkbbbbbbbbbbbbbbbbbbbbbbbbbbhhhhhhhhhhhhhhhhh uuuuuuuuuuuuuuuuuuuuuuuuuuuuu tttttttttt"},
+  {title: "Hello2", content: "content ajksdbakbdakbdah jhasbdj "}];
+  const [cards, setCards] = useState(sample);
+  
+
+  const cardsList = cards.map(card  => 
+    <div style={{ marginTop: "20px" }}>
+      <Link className={classes.link} to="/thread">
+          <PostCard className={cx(classes.root, classes.card)} title={card.title} content={card.content}/>
+      </Link>
+    </div>
+      
+   );
+  
+ 
+  
+  
+
   return (
     <div style={{ marginTop: "10px" }}>
-      <div style={{marginBottom:'10px'}}>
-        <Card className={ cx(classes.root,classes.card) } variant="outlined">
-          <CardContent>
-            <Typography variant="h5" style={{fontWeight:'500', color:'#FCA311'}} gutterBottom>
-              Huzaifa Shuja
-            </Typography>
-            <Typography variant="body1">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-              dolorem eligendi ab ratione quis commodi officiis suscipit quos
-              delectus optio officia illum impedit accusantium natus laboriosam
-              quam quo reiciendis mollitia!
-              <br />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" style={{color:"#FCA311"}} ><VisibilityIcon /><p style={{marginLeft:'5px'}}>23</p></Button>
-            <Button size="small" style={{color:"#FCA311"}}><ReplyIcon /> <p  style={{marginLeft:'5px'}}>1</p> </Button>
-          </CardActions>
-        </Card>
-      </div>
-      <div style={{marginBottom:'10px'}}>
-        <Card className={ cx(classes.root,classes.card) } variant="outlined">
-          <CardContent>
-            <Typography variant="h5" style={{fontWeight:'500', color:'#FCA311'}} gutterBottom>
-              Huzaifa Shuja
-            </Typography>
-            <Typography variant="body1">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-              dolorem eligendi ab ratione quis commodi officiis suscipit quos
-              delectus optio officia illum impedit accusantium natus laboriosam
-              quam quo reiciendis mollitia!
-              <br />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" style={{color:"#FCA311"}} ><VisibilityIcon /><p style={{marginLeft:'5px'}}>23</p></Button>
-            <Button size="small" style={{color:"#FCA311"}}><ReplyIcon /> <p  style={{marginLeft:'5px'}}>1</p> </Button>
-          </CardActions>
-        </Card>
-      </div>
-      <div style={{marginBottom:'10px'}}>
-        <Card className={ cx(classes.root,classes.card) } variant="outlined">
-          <CardContent>
-            <Typography variant="h5" style={{fontWeight:'500', color:'#FCA311'}} gutterBottom>
-              Huzaifa Shuja
-            </Typography>
-            <Typography variant="body1">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-              dolorem eligendi ab ratione quis commodi officiis suscipit quos
-              delectus optio officia illum impedit accusantium natus laboriosam
-              quam quo reiciendis mollitia!
-              <br />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" style={{color:"#FCA311"}} ><VisibilityIcon /><p style={{marginLeft:'5px'}}>23</p></Button>
-            <Button size="small" style={{color:"#FCA311"}}><ReplyIcon /> <p  style={{marginLeft:'5px'}}>1</p> </Button>
-          </CardActions>
-        </Card>
-      </div>
-      <div style={{marginBottom:'10px'}}>
-        <Card className={ cx(classes.root,classes.card) } variant="outlined">
-          <CardContent>
-            <Typography variant="h5" style={{fontWeight:'500', color:'#FCA311'}} gutterBottom>
-              Huzaifa Shuja
-            </Typography>
-            <Typography variant="body1">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-              dolorem eligendi ab ratione quis commodi officiis suscipit quos
-              delectus optio officia illum impedit accusantium natus laboriosam
-              quam quo reiciendis mollitia!
-              <br />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" style={{color:"#FCA311"}} ><VisibilityIcon /><p style={{marginLeft:'5px'}}>23</p></Button>
-            <Button size="small" style={{color:"#FCA311"}}><ReplyIcon /> <p  style={{marginLeft:'5px'}}>1</p> </Button>
-          </CardActions>
-        </Card>
-      </div>
-      <div style={{marginBottom:'10px'}}>
-        <Card className={ cx(classes.root,classes.card) } variant="outlined">
-          <CardContent>
-            <Typography variant="h5" style={{fontWeight:'500', color:'#FCA311'}} gutterBottom>
-              Huzaifa Shuja
-            </Typography>
-            <Typography variant="body1">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-              dolorem eligendi ab ratione quis commodi officiis suscipit quos
-              delectus optio officia illum impedit accusantium natus laboriosam
-              quam quo reiciendis mollitia!
-              <br />
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" style={{color:"#FCA311"}} ><VisibilityIcon /><p style={{marginLeft:'5px'}}>23</p></Button>
-            <Button size="small" style={{color:"#FCA311"}}><ReplyIcon /> <p  style={{marginLeft:'5px'}}>1</p> </Button>
-          </CardActions>
-        </Card>
-      </div>
+      {cardsList}
       
     </div>
   );

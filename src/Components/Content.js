@@ -1,4 +1,12 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import CreateIcon from '@material-ui/icons/Create';
@@ -42,11 +50,14 @@ export default function Content() {
       <Typography variant="subtitle1" style={{color:"#fff"}}>
         A safe place to Write Anonymously
       </Typography>
-        
+        <Link to="/write" style={{
+            textDecoration:'none'
+        }}>
         <Button size="large" variant="contained" style={{marginTop:'0.75em'}} className={classes.margin}>
           Start Writing
           <CreateIcon/>
         </Button>
+        </Link>
         </div>
         <div className={classes.color} style={{display:'flex', justifyContent:'space-between'}} >
         <Typography variant="body2" gutterBottom>

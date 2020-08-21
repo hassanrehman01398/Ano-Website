@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
-} from "react-router-dom";
+//import PersistentDrawerRight from './Navbar';
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -17,8 +10,9 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import Content from "./Content"
-import Cards from './Cards'
+import Word from './Word'
+//import Content from "./Content"
+//import Cards from './Cards'
 //import Icon from '@material-ui/core/Icon';
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -33,18 +27,17 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 import InfoIcon from "@material-ui/icons/Info";
 //import Button from "@material-ui/core/Button";
+//import Word from './Word';
 import CallIcon from "@material-ui/icons/Call";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
-import Thread from './Thread';
-import Word from './Word';
-import About from './About';
-import Terms from './Terms';
+//import zIndex from "@material-ui/core/styles/zIndex";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    
   },
   margin: {
     margin: theme.spacing(1),
@@ -113,14 +106,8 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginRight: 0,
   },
-  link:{
-    textDecoration: 'none',
-    color: 'inherit'
-  }
-  
 }));
-
-export default function PersistentDrawerRight() {
+export default function Write() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -134,9 +121,7 @@ export default function PersistentDrawerRight() {
   };
 
   return (
-    
-    <Router>  
-      <div className={classes.root}>
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -146,24 +131,10 @@ export default function PersistentDrawerRight() {
         })}
       >
         <Toolbar>
-          
-            
-
-            <Typography variant="h6" noWrap  className={classes.title}
-                        >
-
-            <Link to="/" style={{
-                          textDecoration: 'none',
-                          color: '#FCA311',
-                          display: 'flex'
-                        }}>
-            <GroupAddIcon style={{color:'#FCA311',
-                                    margin: '4px'}}/>
-              AnoWeb
-            </Link>
-            </Typography>
-          
-         
+          <GroupAddIcon style={{ color: "#FCA311" }} />
+          <Typography variant="h6" noWrap className={classes.title}>
+            AnoWeb
+          </Typography>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -179,46 +150,23 @@ export default function PersistentDrawerRight() {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-        style={{backgroundColor:'#333533'}}
-        onClick={handleDrawerClose}
+        style={{ backgroundColor: "#333533",paddingBottom:'380px',}}
       >
-        <div className={classes.drawerHeader} />
+        <div className={classes.drawerHeader}  />
         {/* <Content />
-        <Cards/> */}
-
-        <Switch>
-          <Route path="/" exact>
-            <Content/>
-            <Cards/>
-          </Route>
-
-          <Route path="/thread">
-            <Thread/>
-          </Route>
-
-          <Route path="/write">
-            <Word/>
-          </Route>
-
-          <Route path="/about">
-            <About/>
-          </Route>
-
-          <Route path="/terms">
-            <Terms/>
-          </Route>
-        </Switch>
+          <Cards/> */}
+        <Word/>
 
         {/* <Typography className={classes.type}  variant="h5" gutterBottom>
-        The Only Platform Where You can be 100% Anonymous. No Login required & No Ip Tracing
-      </Typography>
-        <Typography variant='h6' style={{textAlign:'center'}}>
-        A safe place to Write Anonymously
+          The Only Platform Where You can be 100% Anonymous. No Login required & No Ip Tracing
         </Typography>
-        <center>
-        <Button  size="large" className={classes.margin}>
-          Start Writing
-        </Button></center> */}
+          <Typography variant='h6' style={{textAlign:'center'}}>
+          A safe place to Write Anonymously
+          </Typography>
+          <center>
+          <Button  size="large" className={classes.margin}>
+            Start Writing
+          </Button></center> */}
       </main>
       <Drawer
         className={classes.drawer}
@@ -240,29 +188,30 @@ export default function PersistentDrawerRight() {
         </div>
         <Divider />
         <List>
-          
+          <ListItem button>
+            <ListItemIcon>
+              <RateReviewIcon />
+            </ListItemIcon>
+            <ListItemText primary="Suggestion" />
+          </ListItem>
           <ListItem button>
             <ListItemIcon>
               <CallIcon />
             </ListItemIcon>
             <ListItemText primary="Helpline" />
           </ListItem>
-          <Link to="/about" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
               <InfoIcon />
             </ListItemIcon>
             <ListItemText primary="About Us" />
           </ListItem>
-          </Link>
-          <Link to="/terms" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
               <ImportContactsIcon />
             </ListItemIcon>
             <ListItemText primary="Terms and Conditions" />
           </ListItem>
-          </Link>
         </List>
         <Divider />
         <List style={{ color: "black" }}>
@@ -278,19 +227,14 @@ export default function PersistentDrawerRight() {
             </ListItemIcon>
             <ListItemText primary="Instagram" />
           </ListItem>
-          <a target="_blank" href="https://github.com/hassanrehman01398/Ano-Website" className={classes.link}>
           <ListItem button>
             <ListItemIcon>
               <GitHubIcon />
             </ListItemIcon>
             <ListItemText primary="Github" />
           </ListItem>
-          </a>
         </List>
       </Drawer>
     </div>
-
-    
-    </Router>
-      );
+  );
 }

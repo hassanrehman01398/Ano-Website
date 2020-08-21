@@ -54,13 +54,9 @@ export default function About(){
             <Typography variant="h3" style={{fontWeight:'500', color:'#FCA311',}} gutterBottom>
               <center>About Us</center> 
             </Typography>
-            <div>
-            <center>
-            <img src='https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1000'
-                 height='auto' 
-                 width="50%" 
-                 alt="pic"/>
-            </center>
+            center>
+                        <img src="https://i.pinimg.com/originals/17/2e/05/172e05d2a862ff36a5d17d3ed7c978d2.png"  width='300'/>
+                        </center>
             <br/>
             </div>
             

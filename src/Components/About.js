@@ -61,7 +61,7 @@ export default function About(){
          
             
             <Typography variant="h6">
-              AnoWeb  is built to provide a safe place for everyone who wishes to freely share their thoughts, emotions, ideas, experiences and much more without the fear of being judged or labeled.  We acknowledge that providing an anonymous platform has the ability to break barriers in communication and stigmatization.
+              AnoWeb  is built to provide a safe place for everyone who wish to freely share their thoughts, emotions, ideas, experiences and much more without the fear of being judged or labeled.  We acknowledge that providing an anonymous platform has the ability to break barriers in communication and stigmatization.
               <br />
               <br/>
               AnoWeb can be utilized as your own safe place where you can freely un-conceal your thoughts and emotions without any apprehensions. AnoWeb requires no log-in, your IP address is not tracked and we do not leave any cache files on your browser or SERVER.  This is to assure our users that we give utmost importance to their privacy and anonymity.  Keeping this in mind, we have also ensured that no comment section is available for the posts.  This is to further protect the writer of the post and to ensure no negative interactions or cyberbullying takes place.  We are hopeful that this will further encourage our users to share openly and to read stories of others, who are just like them or might be different but can still connect and learn at a certain level.

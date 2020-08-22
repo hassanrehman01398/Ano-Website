@@ -54,11 +54,11 @@ export default function About(){
             <Typography variant="h3" style={{fontWeight:'500', color:'#FCA311',}} gutterBottom>
               <center>About Us</center> 
             </Typography>
-            center>
+            <center>
                         <img src="https://i.pinimg.com/originals/17/2e/05/172e05d2a862ff36a5d17d3ed7c978d2.png"  width='300'/>
                         </center>
             <br/>
-            </div>
+         
             
             <Typography variant="h6">
               AnoWeb  is built to provide a safe place for everyone who wishes to freely share their thoughts, emotions, ideas, experiences and much more without the fear of being judged or labeled.  We acknowledge that providing an anonymous platform has the ability to break barriers in communication and stigmatization.
@@ -69,6 +69,7 @@ export default function About(){
             <br/>
 
             </Typography>
+            
           </CardContent>
           </Card>
         </div>

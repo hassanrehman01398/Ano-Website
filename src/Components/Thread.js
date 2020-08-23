@@ -144,6 +144,14 @@ SnackBar: {
 }));
   
 export default function Thread(props)  {
+  //aboutProps
+  
+    // const { data } = props.location
+    // return (
+    //   // render logic here
+    //   console.log(data)
+    // )
+ // console.log( this.props.location.state)
     const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);

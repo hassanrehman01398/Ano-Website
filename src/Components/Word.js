@@ -34,7 +34,9 @@ export default function Word() {
  function handleTitleChange(e){
   setpostTitle(e.target.value);
 }
-
+// submitFormAdd = e => {
+ 
+// }
  function post(e){
   //  e.preventDefault();
 
@@ -43,7 +45,32 @@ export default function Word() {
     
   }
   else{
+    var curTime = new Date().toLocaleString();
     console.log(postTitle+postContent);
+    e.preventDefault()
+    fetch('http://localhost:3000/crud', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        post_description: postContent,
+        likes: 0,
+        views: 0,
+        posttitle: postTitle,
+       posttime:curTime
+      })
+    })
+      .then(response => response.json())
+      .then(item => {
+        if(Array.isArray(item)) {
+          this.props.addItemToState(item[0])
+          this.props.toggle()
+        } else {
+          console.log('failure')
+        }
+      })
+      .catch(err => console.log(err))
     setpostContent('');
     setpostTitle('');
   }

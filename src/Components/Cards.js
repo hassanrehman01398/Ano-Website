@@ -55,17 +55,49 @@ const useStyles = makeStyles({
 });
 
 export default function Cards() {
+  const [cards, setCards] = useState([]);
   const classes = useStyles();
+
   //const bull = <span className={classes.bullet}>•</span>;
-  const sample = [{title: "Hello", content: "content ajksdbakbdakbdah jhasbdjhasbd hasbdjhas jhsdb kjbkjb \r hvjv chgchgchgcghchgchgcghchgc fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff ffffffffyhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh uuuuuuuuuuuuuuuuuuuuuuuuuuuuu tttttttttttttttttttttttt                  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkbbbbbbbbbbbbbbbbbbbbbbbbbbhhhhhhhhhhhhhhhhh uuuuuuuuuuuuuuuuuuuuuuuuuuuuu tttttttttt"},
-  {title: "Hello2", content: "content ajksdbakbdakbdah jhasbdj "}];
-  const [cards, setCards] = useState(sample);
+  let sample=[];
+  async function hassan(){
+ await  fetch('http://localhost:3000/crud', {
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // body: JSON.stringify({
+      //   post_description: postContent,
+      //   likes: 0,
+      //   views: 0,
+      //   posttitle: postTitle,
+      //  posttime:curTime
+      // })
+    })
+      .then(async (response )=> await response.json())
+      .then(async item => {
+        if(Array.isArray(item)) {
+         // console.log(item)
+          sample=await item
+          console.log(sample)
+         setCards(item);
+         console.log(cards,"by hassan")
+          // this.props.addItemToState(item[0])
+          // this.props.toggle()
+        } else {
+          console.log('failure')
+        }
+      })
+      .catch(err => console.log(err))}
+      hassan()
+  console.log(cards,"hassan");
+
   
 
   const cardsList = cards.map(card  => 
     <div style={{ marginTop: "20px" }}>
-      <Link className={classes.link} to="/thread">
-          <PostCard className={cx(classes.root, classes.card)} title={card.title} content={card.content}/>
+      <Link className={classes.link} to={{pathname:'/thread', aboutProps:{name:'1'}}} > 
+          <PostCard className={cx(classes.root, classes.card)} title={card.posttitle} content={card.post_description}/>
       </Link>
     </div>
       

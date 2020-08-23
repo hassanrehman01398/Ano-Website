@@ -34,11 +34,26 @@ https://github.com/hassanrehman01398/Ano-nodejs.git
 It was our aim to deploy our AI models in this webapp which can remove abusive post but due to short of time we were unable to do that.
 # Credit:
 ## M.Hassan Ur Rehman
+
 <a href="https://www.linkedin.com/in/muhammad-hassan-ur-rehman-32118a13a//">
          <img alt="Linkenin" src="https://cdn2.iconfinder.com/data/icons/popular-social-media-flat/48/Popular_Social_Media-22-512.png"
          width=70" height="70">
       </a>
 ## Huziafa Shuja
+
 <a href="https://www.linkedin.com/">
          <img alt="Linkenin" src="https://cdn2.iconfinder.com/data/icons/popular-social-media-flat/48/Popular_Social_Media-22-512.png"
          width=70" height="70">
+         
+ ## Taber Bin Zameer
+                              
+<a href="https://www.linkedin.com/">
+         <img alt="Linkenin" src="https://cdn2.iconfinder.com/data/icons/popular-social-media-flat/48/Popular_Social_Media-22-512.png"
+         width=70" height="70">
+      </a>
+## Sufyan Ahmad
+                              
+<a href="https://www.linkedin.com/">
+         <img alt="Linkenin" src="https://cdn2.iconfinder.com/data/icons/popular-social-media-flat/48/Popular_Social_Media-22-512.png"
+         width=70" height="70">
+      </a>

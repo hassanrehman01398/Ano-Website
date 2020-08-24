@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,7 +40,45 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Content() {
     const classes = useStyles();
-    //const theme = useTheme();
+    var date=new Date().toLocaleString();
+    const [posts, setposts] = useState([]);
+    let sample=[];
+  //  async function hassan(){
+   fetch('http://localhost:3000/count', {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify({
+        //   post_description: postContent,
+        //   likes: 0,
+        //   views: 0,
+        //   posttitle: postTitle,
+        //  posttime:curTime
+        // })
+      })
+        .then((response )=> response.json())
+        .then( item => {
+        //  console.log("amaaz")
+        //  console.log(item)
+        //  sample[0]=item
+          setposts(item)
+        //  console.log(sample[0])
+          if(Array.isArray(item)) {
+           // console.log(item)
+            sample=item
+            console.log(sample)
+            console.log("amaaz arshad")
+          // setCards(item);
+           //console.log(cards,"by hassan")
+            // this.props.addItemToState(item[0])
+            // this.props.toggle()
+          } else {
+            console.log('failure')
+          }
+        })
+        .catch(err => console.log(err))
+      // hassan();
     return (
     <div >
         <div className={classes.color} style={{ textAlign: "center" }}>
@@ -61,15 +100,15 @@ export default function Content() {
         </div>
         <div className={classes.color} style={{display:'flex', justifyContent:'space-between'}} >
         <Typography variant="body2" gutterBottom>
-        Time Spent: 303D 21h 37m 21s   
+        Time : {date}
         </Typography>
         <Typography variant="body2" gutterBottom>
-        1223 Visitors   
+           
         </Typography>
         </div>        
         <div style={{marginTop:'10px',display:'flex', justifyContent:'space-between'}}>
         <Typography className={classes.color} variant="h6" gutterBottom>
-        Total Posts: 3084   
+        Total Posts: {posts} 
         </Typography>
         <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (

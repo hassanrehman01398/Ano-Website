@@ -36,7 +36,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-
+import queryString from 'query-string';
 import cx from 'classnames';
 import ReplyIcon from '@material-ui/icons/Reply';
 //import styles, { css } from 'styled-components';
@@ -144,29 +144,108 @@ SnackBar: {
 }));
   
 export default function Thread(props)  {
+  //Console.log(props.location.data
+ 
+  var res=1
+ function render() {
+    // url is 'https://www.example.com/user?id=123&type=4';
+    // let url = props
+    // let params = queryString.parse(url);
+    // console.log("sufyan")
+    var d=window.location.pathname
+   
+    res = d.substring(8, 10);
+    console.log(res)
+    //console.log(window.location.pathname);
+    // The result will be like below
+    // { id: 123, type: 4 }
+    // other code
+   }
+   render()
   //aboutProps
-  
-    // const { data } = props.location
-    // return (
-    //   // render logic here
-    //   console.log(data)
-    // )
- // console.log( this.props.location.state)
-    const classes = useStyles();
+  const classes = useStyles();
   const theme = useTheme();
+  const [title,settitle]=useState([]);
+  const [description,setdescription]=useState([]);
   const [open, setOpen] = React.useState(false);
   const [isReplying, setReplying] = useState(false);
   const [replyContent, setReplyContent] = useState('');
   const [openSnack, setOpenSnack] = React.useState(false);
   const [snackMessage, setSnackMessage] = useState('');
   const [replies, setReplies] = useState([]);
+//   function getreplys(){
+// //http://localhost:3000/specificreplydata?reply_to=1
+// console.log("huzaiab"+res)
+// fetch('http://localhost:3000/specificpostdata?reply_to='+res, {
+//   method: 'get',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   // body: JSON.stringify({
+//   //  post_id:'1'
+
+    
+//   // })
+// })
+//   .then((response )=> response.json())
+//   .then( item => {
+//     setdescription(item[0].reply_description)
+   
+//   console.log(item)
+//   console.log("afnan ")
+//     //setposts(item)
+ 
+//     if(Array.isArray(item)) {
+// console.log(item)
+//      // sample=item
+//      // console.log(sample)
+//       console.log("amaaz arshad")
   
+//     } else {
+//       console.log('failure')
+//     }
+//   })
+//   .catch(err => console.log(err))
+//   }
 
   const replyList = replies.map(reply => <ReplyCard
     content = {reply.content}
      />
    );
 
+  fetch('http://localhost:3000/specificpostdata?post_id='+res, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify({
+        //  post_id:'1'
+  
+          
+        // })
+      })
+        .then((response )=> response.json())
+        .then( item => {
+          setdescription(item[0].post_description)
+          settitle(item[0].posttitle)
+          console.log(item[0].posttitle)
+        console.log(item[0].post_description)
+        console.log("afnan ")
+          //setposts(item)
+       
+          if(Array.isArray(item)) {
+     console.log(item)
+           // sample=item
+           // console.log(sample)
+            console.log("amaaz arshad")
+        
+          } else {
+            console.log('failure')
+          }
+        })
+        .catch(err => console.log(err))
+   //getreplys()
+    
   
 
   const handleOpenSnack = () => {
@@ -204,6 +283,8 @@ export default function Thread(props)  {
             style={{
               marginTop:'10px',
               float:'right',
+              backgroundColor:'#FCA311',
+              fontWeight:"700",
               }} 
               className={classes.margin}
               >
@@ -213,6 +294,8 @@ export default function Thread(props)  {
             style={{
               marginTop:'10px',
               float:'right',
+              backgroundColor:'#FCA311',
+              fontWeight:"700",
               }} 
               className={classes.margin}
               onClick={handleCancel}
@@ -245,10 +328,39 @@ export default function Thread(props)  {
     }
     else{
       console.log(replyContent);
+      var curTime = new Date().toLocaleString();
+    //console.log(postTitle+postContent);
+    e.preventDefault()
+    fetch('http://localhost:3000/reply', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        reply_to:res,
+        reply_description:replyContent,
+        likes:0,
+        views:0,
+        replytime:curTime
+
+        
+      })
+    })
+      .then(response => response.json())
+      .then(item => {
+        if(Array.isArray(item)) {
+          this.props.addItemToState(item[0])
+          this.props.toggle()
+        } else {
+          console.log('failure')
+        }
+      })
+      .catch(err => console.log(err))
       const newReply = {content: `${replyContent}`};
       setReplies([...replies, newReply]);
       setReplyContent('');
       setReplying(!isReplying);
+
       setSnackMessage('Reply Submitted!');
       handleOpenSnack();
       
@@ -293,13 +405,10 @@ export default function Thread(props)  {
             <Card className={ cx(classes.roots,classes.card) } variant="outlined">
             <CardContent>
                 <Typography variant="h5" style={{fontWeight:'500', color:'#FCA311'}} gutterBottom>
-                Huzaifa Shuja
+                {title}
                 </Typography>
                 <Typography variant="body1">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-                dolorem eligendi ab ratione quis commodi officiis suscipit quos
-                delectus optio officia illum impedit accusantium natus laboriosam
-                quam quo reiciendis mollitia!
+                {description}
                 <br />
                 </Typography>
             </CardContent>

@@ -10,6 +10,11 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from "@material-ui/core/Button";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 //import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,14 +25,33 @@ const useStyles = makeStyles((theme) => ({
     
     textAlign:'right',
     
-  }}));
+  },
+  SnackBar: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    }},}));
 
 export default function Word() {
  const classes = useStyles();
  const [postContent, setpostContent] = useState('');
  const [postTitle, setpostTitle] = useState('');
+ const [openSnack, setOpenSnack] = React.useState(false);
+  const [snackMessage, setSnackMessage] = useState('');
+  const handleOpenSnack = () => {
+    setOpenSnack(true);
+  };
 
- function handleContentChange(e){
+  const handleCloseSnack = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSnack(false);
+  };
+ 
+ 
+  function handleContentChange(e){
    setpostContent(e.target.value);
  }
 
@@ -40,8 +64,10 @@ export default function Word() {
  function post(e){
   //  e.preventDefault();
 
-   if(postContent.length === 0){
-    console.log('content is empty');
+  if(postContent.length === 0|| postTitle.length===0){
+    e.preventDefault();
+    setSnackMessage('Please fill both fields');
+    handleOpenSnack();
     
   }
   else{
@@ -78,6 +104,15 @@ export default function Word() {
 
   return(
     <div style={{zIndex: 2}}>
+      <Snackbar open={openSnack} autoHideDuration={4000} onClose={handleCloseSnack}>
+        <Alert onClose={handleCloseSnack} style={{
+          fontFamily: 'inherit',
+          backgroundColor: '#FCA311',
+          color: 'black'
+        }}>
+          {snackMessage}
+        </Alert>
+      </Snackbar>
       <form action="" method="post">
       <TextareaAutosize 
       aria-label="empty textarea" 

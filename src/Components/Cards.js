@@ -96,7 +96,7 @@ export default function Cards() {
 
   const cardsList = cards.map(card  => 
     <div style={{ marginTop: "20px" }}>
-      <Link className={classes.link} to={{pathname:'/thread', aboutProps:{name:'1'}}} > 
+      <Link className={classes.link} to={{pathname:'/thread/'+card.post_id, data:'1'}} > 
           <PostCard className={cx(classes.root, classes.card)} title={card.posttitle} content={card.post_description}/>
       </Link>
     </div>

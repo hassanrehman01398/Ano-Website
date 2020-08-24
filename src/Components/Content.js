@@ -103,13 +103,13 @@ export default function Content() {
         Time : {date}
         </Typography>
         <Typography variant="body2" gutterBottom>
-           
+        1223 Visitors   
         </Typography>
         </div>        
         <div style={{marginTop:'10px',display:'flex', justifyContent:'space-between'}}>
         <Typography className={classes.color} variant="h6" gutterBottom>
         Total Posts: {posts} 
-        </Typography>
+        </Typography>r
         <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
         <React.Fragment>

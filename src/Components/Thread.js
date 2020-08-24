@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 
 //import PersistentDrawerRight from './Navbar';
 import clsx from "clsx";
@@ -145,7 +145,57 @@ SnackBar: {
   
 export default function Thread(props)  {
   //Console.log(props.location.data
- 
+ useEffect(()=>{
+  async function testter(){
+    await fetch('http://localhost:3000/specificreplydata?reply_to=1', {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    // body: JSON.stringify({
+    //  post_id:'1'
+
+      
+    // })
+  })
+    .then((response )=> {
+      console.log(response.json(),"talhaishere")
+      return response.json()})
+    .then( async item => {
+      console.log(item,"hhererererer")
+    //   setdescription(item[0].post_description)
+    //   settitle(item[0].posttitle)
+    //   console.log(item[0].posttitle)
+    // console.log(item[0].post_description)
+await setReplies(item)
+console.log(item)
+      //setposts(item)
+   
+      if(Array.isArray(item)) {
+        setreplys(item)
+      //  setReplyContent(item)
+      // replyList = replies.map(reply => <ReplyCard
+      //   content = {item[0].reply_description}
+      //    />
+      //  );
+       // setReplies(item)
+       // replyList=item
+        console.log(item)
+      
+    
+      } else {
+        console.log('failure')
+      }
+    })
+    .catch(
+      
+      err => console.log(err+"yoyo")
+    
+    )
+
+  }
+  testter();
+ },{})
   var res=1
  function render() {
     // url is 'https://www.example.com/user?id=123&type=4';
@@ -166,6 +216,8 @@ export default function Thread(props)  {
   const classes = useStyles();
   const theme = useTheme();
   const [title,settitle]=useState([]);
+  
+  const [replys,setreplys]=useState([]);
   const [description,setdescription]=useState([]);
   const [open, setOpen] = React.useState(false);
   const [isReplying, setReplying] = useState(false);
@@ -208,11 +260,12 @@ export default function Thread(props)  {
 //   .catch(err => console.log(err))
 //   }
 
-  const replyList = replies.map(reply => <ReplyCard
+  let replyList = replies.map(reply => <ReplyCard
     content = {reply.content}
      />
    );
-
+   
+//http://localhost:3000/specificreplydata?reply_to='+res
   fetch('http://localhost:3000/specificpostdata?post_id='+res, {
         method: 'get',
         headers: {
@@ -234,6 +287,7 @@ export default function Thread(props)  {
           //setposts(item)
        
           if(Array.isArray(item)) {
+
      console.log(item)
            // sample=item
            // console.log(sample)
@@ -246,7 +300,49 @@ export default function Thread(props)  {
         .catch(err => console.log(err))
    //getreplys()
     
-  
+   fetch('http://localhost:3000/specificreplydata?reply_to='+res, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    // body: JSON.stringify({
+    //  post_id:'1'
+
+      
+    // })
+  })
+    .then((response )=> response.json())
+    .then( item => {
+    //   setdescription(item[0].post_description)
+    //   settitle(item[0].posttitle)
+    //   console.log(item[0].posttitle)
+    // console.log(item[0].post_description)
+
+      //setposts(item)
+   
+      if(Array.isArray(item)) {
+        setreplys(item)
+      //  setReplyContent(item)
+      // replyList = replies.map(reply => <ReplyCard
+      //   content = {item[0].reply_description}
+      //    />
+      //  );
+       // setReplies(item)
+       // replyList=item
+        console.log(item)
+        console.log("amazgn")
+       // sample=item
+       // console.log(sample)
+        console.log("amaaz arshad")
+    
+      } else {
+        console.log('failure')
+      }
+    })
+    .catch(err => console.log(err))
+//getreplys()
+
+///replyList=replys.map()
 
   const handleOpenSnack = () => {
     setOpenSnack(true);

@@ -66,13 +66,7 @@ export default function Cards() {
       headers: {
         'Content-Type': 'application/json'
       },
-      // body: JSON.stringify({
-      //   post_description: postContent,
-      //   likes: 0,
-      //   views: 0,
-      //   posttitle: postTitle,
-      //  posttime:curTime
-      // })
+     
     })
       .then(async (response )=> await response.json())
       .then(async item => {
@@ -81,9 +75,7 @@ export default function Cards() {
           sample=await item
         //  console.log(sample)
          setCards(item);
-        // console.log(cards,"by hassan")
-          // this.props.addItemToState(item[0])
-          // this.props.toggle()
+       
         } else {
           console.log('failure')
         }

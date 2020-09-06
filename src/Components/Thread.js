@@ -279,6 +279,7 @@ console.log(item)
       })
         .then((response )=> response.json())
         .then( item => {
+          console.log(item);
           setdescription(item[0].post_description)
           settitle(item[0].posttitle)
           console.log(item[0].posttitle)
@@ -321,7 +322,9 @@ console.log(item)
       //setposts(item)
    
       if(Array.isArray(item)) {
-        setreplys(item)
+        //reply
+      console.log(item);
+      setReplies(item)
       //  setReplyContent(item)
       // replyList = replies.map(reply => <ReplyCard
       //   content = {item[0].reply_description}
@@ -528,7 +531,16 @@ console.log(item)
                 marginBottom: "10px",
                 marginLeft: "30px"
             }}>
-            {replyList}
+            {/* {replyList} */}
+          
+            {replies.map((reply)=>{
+              console.log(reply,"reply")
+              return(
+                <ReplyCard
+                content = {reply}
+                 />
+              )
+            })}
         </div>
         
         </div>

@@ -15,8 +15,15 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+
+
   
-import { makeStyles/*, useTheme*/ } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -35,14 +42,32 @@ const useStyles = makeStyles((theme) => ({
       dis:{
           display:'flex',
           justifyContent:'space-between'
-      }
+      },
+      formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+      },
+      selectEmpty: {
+        marginTop: theme.spacing(2),
+      },
 }));
+
+
 
 export default function Content() {
     const classes = useStyles();
     var date=new Date().toLocaleString();
     const [posts, setposts] = useState([]);
     let sample=[];
+    const [category, setCategory] = React.useState('');
+
+    const handleChange = (event) => {
+      setCategory(event.target.value);
+      console.log(event.target.value,"category")
+    };
+
+
+
   //  async function hassan(){
    fetch('http://localhost:3000/count', {
         method: 'get',
@@ -67,8 +92,8 @@ export default function Content() {
           if(Array.isArray(item)) {
            // console.log(item)
             sample=item
-            console.log(sample)
-            console.log("amaaz arshad")
+          //  console.log(sample)
+          //  console.log("amaaz arshad")
           // setCards(item);
            //console.log(cards,"by hassan")
             // this.props.addItemToState(item[0])
@@ -78,6 +103,19 @@ export default function Content() {
           }
         })
         .catch(err => console.log(err))
+
+
+        function onSubmit(e){
+
+          console.log("hello");
+          
+          }
+
+          function callApi(e){
+            console.log(e.target.value,"category")
+            // fetch(``)
+          }
+
       // hassan();
     return (
     <div >
@@ -111,19 +149,40 @@ export default function Content() {
         Total Posts: {posts} 
         </Typography>r
         <PopupState variant="popover" popupId="demo-popup-menu">
+    
       {(popupState) => (
-        <React.Fragment>
-          <Button variant="contained" className={classes.margin}   {...bindTrigger(popupState)}>
-            Sort By
-            <ArrowDropDownIcon fontSize='small'/>
-          </Button>
-          <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={popupState.close}>Newest</MenuItem>
-            <MenuItem onClick={popupState.close}>Maximum Views</MenuItem>
-            <MenuItem onClick={popupState.close}>Minimum Views</MenuItem>
-            <MenuItem onClick={popupState.close}>Reset Filter</MenuItem>
-          </Menu>
-        </React.Fragment>
+        // <React.Fragment>
+        //   <Button variant="contained" className={classes.margin}   {...bindTrigger(popupState)}>
+        //     Sort By
+        //     <ArrowDropDownIcon fontSize='small'/>
+        //   </Button>
+       
+        //   <Menu onChange={onSubmit} {...bindMenu(popupState)}>
+     
+        //     <MenuItem onClick={onsubmit}>Newest</MenuItem>
+        //     <MenuItem onClick={popupState.close}>Maximum Views</MenuItem>
+        //     <MenuItem onClick={popupState.close}>Minimum Views</MenuItem>
+        //     <MenuItem onClick={popupState.close}>Reset Filter</MenuItem>
+        //   </Menu>
+        // </React.Fragment>
+        <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-outlined-label">Sort By</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          value={category}
+          onChange={(e)=>{callApi(e)}}
+          label="Age"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={"newest"}>Newest</MenuItem>
+          <MenuItem value={"maxviews"}>Maximum Views</MenuItem>
+          <MenuItem value={"minviews"}>Minimum Views</MenuItem>
+          <MenuItem value={"reset"}>Reset Filter</MenuItem>
+        </Select>
+      </FormControl>
       )}
     </PopupState>
 

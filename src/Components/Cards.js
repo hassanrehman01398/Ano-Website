@@ -79,9 +79,9 @@ export default function Cards() {
         if(Array.isArray(item)) {
          // console.log(item)
           sample=await item
-          console.log(sample)
+        //  console.log(sample)
          setCards(item);
-         console.log(cards,"by hassan")
+        // console.log(cards,"by hassan")
           // this.props.addItemToState(item[0])
           // this.props.toggle()
         } else {
@@ -90,7 +90,7 @@ export default function Cards() {
       })
       .catch(err => console.log(err))}
       hassan()
-  console.log(cards,"hassan");
+  //console.log(cards,"hassan");
 
   
 

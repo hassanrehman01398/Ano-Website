@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ReplyCard(props){
     const classes = useStyles();
+  
     return(
         <div className="reply"
              style={{
@@ -37,9 +38,10 @@ export default function ReplyCard(props){
                 <Typography variant="body1">
                 
                 <div>
-                    {props.content.split("\n").map((i,key) => {
+                    {/* {props.content.split("\n").map((i,key) => {
                         return <div key={key}>{i}</div>;
-                    })}
+                    })} */}
+                    {props.content.reply_description}
                 </div>
                 
                 </Typography>

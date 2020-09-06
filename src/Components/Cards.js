@@ -64,9 +64,20 @@ export default function Cards() {
  await  fetch('https://warm-eyrie-33819.herokuapp.com/crud', {
       method: 'get',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers': '*',
+'Access-Control-Allow-Credentials': true
+
+
       },
-     
+      // body: JSON.stringify({
+      //   post_description: postContent,
+      //   likes: 0,
+      //   views: 0,
+      //   posttitle: postTitle,
+      //  posttime:curTime
+      // })
     })
       .then(async (response )=> await response.json())
       .then(async item => {
@@ -75,7 +86,9 @@ export default function Cards() {
           sample=await item
         //  console.log(sample)
          setCards(item);
-       
+        // console.log(cards,"by hassan")
+          // this.props.addItemToState(item[0])
+          // this.props.toggle()
         } else {
           console.log('failure')
         }

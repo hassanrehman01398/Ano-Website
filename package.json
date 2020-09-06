@@ -30,6 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+ "proxy": "https://warm-eyrie-33819.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },

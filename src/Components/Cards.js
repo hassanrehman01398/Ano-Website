@@ -61,7 +61,7 @@ export default function Cards() {
   //const bull = <span className={classes.bullet}>•</span>;
   let sample=[];
   async function hassan(){
- await  fetch('http://localhost:3000/crud', {
+ await  fetch('https://warm-eyrie-33819.herokuapp.com/crud', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json'

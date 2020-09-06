@@ -74,7 +74,7 @@ export default function Word() {
     var curTime = new Date().toLocaleString();
     console.log(postTitle+postContent);
     e.preventDefault()
-    fetch('http://localhost:3000/crud', {
+    fetch('https://warm-eyrie-33819.herokuapp.com/crud', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

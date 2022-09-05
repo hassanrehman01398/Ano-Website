@@ -2,7 +2,7 @@
 <p align="center">
   <img width="460" height="300" src="https://user-images.githubusercontent.com/47937749/90986821-169a6780-e59f-11ea-9a28-d29a2bb290c4.jpg">
 </p>
-Anonymous Posting website build for those posting of those people who feels shy while saying someone something so this website is created by us so that anyone can post anything on any issue.This website neither stores anyone personal data and it is impossible to detect the person as we are not asking any type of password and neither we are using any mac or ip address instead we you are using some technique to hide any one details.
+
 
 # Framework:
 - React Js
